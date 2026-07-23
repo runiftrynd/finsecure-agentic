@@ -1,0 +1,29 @@
+PERUBAHAN PIN
+
+Nasabah dapat mengganti PIN melalui menu keamanan pada aplikasi.
+Nasabah tidak boleh memberikan PIN atau OTP kepada siapa pun.
+
+TRANSFER GAGAL
+
+Transfer dapat gagal karena saldo tidak mencukupi, gangguan sistem,
+rekening tujuan bermasalah, atau batas transaksi telah terlampaui.
+Nasabah dapat memeriksa saldo dan status rekening sebelum mencoba
+kembali.
+
+TRANSFER PENDING
+
+Transfer berstatus pending berarti transaksi masih diproses atau
+diverifikasi oleh sistem. Nasabah dapat memeriksa riwayat transaksi.
+Apabila status tidak berubah dalam waktu yang wajar, kasus dapat
+diteruskan untuk pemeriksaan.
+
+KARTU HILANG
+
+Kartu yang hilang harus segera diblokir melalui aplikasi atau layanan
+nasabah. Jangan memberikan PIN, OTP, CVV, atau password.
+
+SALDO BELUM DIPERBARUI
+
+Saldo dapat terlambat diperbarui karena proses settlement atau gangguan
+sistem. Nasabah dapat memeriksa riwayat transaksi dan mencoba memuat
+ulang aplikasi.

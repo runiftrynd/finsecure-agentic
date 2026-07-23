@@ -1,0 +1,20 @@
+TRANSAKSI TIDAK DIKENALI
+
+Nasabah yang menemukan transaksi tidak dikenali harus segera
+melaporkannya. Sistem dapat melakukan pemeriksaan risiko dan
+pemblokiran sementara.
+
+RISIKO TRANSAKSI
+
+Analisis fraud mempertimbangkan nominal transaksi, waktu transaksi,
+frekuensi transaksi, rata-rata nominal, dan tingkat risiko terminal.
+
+TINDAKAN RISIKO TINGGI
+
+Transaksi berisiko tinggi harus masuk pemeriksaan manual. Hasil model
+tidak secara otomatis menyatakan seseorang melakukan fraud.
+
+KEAMANAN
+
+Nasabah tidak boleh memberikan PIN, OTP, CVV, password, atau kode
+keamanan lainnya kepada siapa pun.

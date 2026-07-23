@@ -1,0 +1,51 @@
+VERIFIKASI IDENTITAS
+
+Pemeriksaan identitas membandingkan nama, NIK, tanggal lahir, serta
+status dokumen.
+
+HASIL APPROVE
+
+Status approve diberikan ketika data utama sesuai dan dokumen masih
+aktif.
+
+HASIL REVIEW
+
+Status review diberikan ketika terdapat variasi kecil pada data,
+misalnya perbedaan ringan pada penulisan nama. Kasus ini membutuhkan
+pemeriksaan manusia.
+
+HASIL REJECT
+
+Status reject dapat diberikan ketika NIK berbeda, tanggal lahir berbeda,
+dokumen tidak aktif, data wajib kosong, atau terdapat ketidaksesuaian
+nama yang signifikan.
+
+PERLINDUNGAN DATA
+
+Data identitas hanya digunakan untuk simulasi akademik dan tidak boleh
+memakai data pribadi nyata.VERIFIKASI IDENTITAS
+
+Pemeriksaan identitas membandingkan nama, NIK, tanggal lahir, serta
+status dokumen.
+
+HASIL APPROVE
+
+Status approve diberikan ketika data utama sesuai dan dokumen masih
+aktif.
+
+HASIL REVIEW
+
+Status review diberikan ketika terdapat variasi kecil pada data,
+misalnya perbedaan ringan pada penulisan nama. Kasus ini membutuhkan
+pemeriksaan manusia.
+
+HASIL REJECT
+
+Status reject dapat diberikan ketika NIK berbeda, tanggal lahir berbeda,
+dokumen tidak aktif, data wajib kosong, atau terdapat ketidaksesuaian
+nama yang signifikan.
+
+PERLINDUNGAN DATA
+
+Data identitas hanya digunakan untuk simulasi akademik dan tidak boleh
+memakai data pribadi nyata.
