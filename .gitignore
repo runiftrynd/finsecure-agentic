@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Environment variables
+.env
+
+# Logs
+logs/*.json
+logs/*.jsonl
+logs/*.csv
+
+# Notebook
+.ipynb_checkpoints/
+
+# Model training
+checkpoints/
+wandb/
+
+# Operating system
+.DS_Store
+Thumbs.db

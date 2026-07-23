@@ -1,0 +1,16 @@
+pandas
+numpy
+joblib
+scikit-learn
+xgboost==3.3.0
+torch
+transformers
+sentencepiece
+safetensors
+rapidfuzz
+google-genai
+chromadb
+sentence-transformers
+langgraph
+typing-extensions
+streamlit
