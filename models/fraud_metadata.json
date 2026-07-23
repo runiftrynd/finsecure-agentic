@@ -1,0 +1,17 @@
+{
+  "model_type": "XGBClassifier",
+  "features": [
+    "TX_AMOUNT",
+    "TX_DURING_WEEKEND",
+    "TX_DURING_NIGHT",
+    "CUSTOMER_ID_NB_TX_1DAY_WINDOW",
+    "CUSTOMER_ID_NB_TX_7DAY_WINDOW",
+    "CUSTOMER_ID_AVG_AMOUNT_7DAY_WINDOW",
+    "CUSTOMER_ID_AVG_AMOUNT_30DAY_WINDOW",
+    "TERMINAL_ID_NB_TX_7DAY_WINDOW",
+    "TERMINAL_ID_RISK_7DAY_WINDOW",
+    "TERMINAL_ID_RISK_30DAY_WINDOW"
+  ],
+  "threshold": 0.905913233757019,
+  "xgboost_version": "3.3.0"
+}
