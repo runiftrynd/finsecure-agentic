@@ -1,10 +1,10 @@
+import streamlit as st
+
 from __future__ import annotations
 
 from typing import Any
 
 from backend import process_finsecure_request
-
-import streamlit as st
 
 st.set_page_config(
     page_title="FinSecure Agentic",
