@@ -17,6 +17,47 @@ CUSTOMER_SERVICE_INTENTS = {
     "transfer_pending",
 }
 
+LOCAL_CUSTOMER_RESPONSES = {
+    "card_arrival": (
+        "Status pengiriman kartu baru dapat diperiksa melalui "
+        "menu kartu pada aplikasi FinSecure. Waktu kedatangan "
+        "bergantung pada proses penerbitan, alamat tujuan, dan "
+        "layanan kurir. Apabila kartu belum diterima sesuai "
+        "estimasi, siapkan nomor permohonan kartu untuk "
+        "pemeriksaan lebih lanjut."
+    ),
+    "change_pin": (
+        "PIN dapat diganti melalui menu keamanan pada aplikasi. "
+        "Nasabah tidak boleh memberikan PIN atau OTP kepada "
+        "pihak lain."
+    ),
+    "lost_card": (
+        "Kartu yang hilang harus segera diblokir melalui "
+        "aplikasi atau layanan nasabah. Jangan memberikan PIN, "
+        "OTP, CVV, atau password kepada pihak lain."
+    ),
+    "transfer_failed": (
+        "Periksa saldo, status rekening tujuan, koneksi, dan "
+        "batas transaksi. Pastikan transaksi sebelumnya tidak "
+        "berhasil sebelum mencoba kembali."
+    ),
+    "transfer_pending": (
+        "Transfer berstatus pending masih diproses atau "
+        "diverifikasi. Periksa riwayat transaksi dan jangan "
+        "mengulangi transfer sebelum statusnya dipastikan."
+    ),
+    "balance_not_updated": (
+        "Periksa riwayat transaksi dan muat ulang aplikasi. "
+        "Saldo dapat terlambat diperbarui karena proses "
+        "settlement atau gangguan sistem."
+    ),
+    "account_blocked": (
+        "Akun yang diblokir memerlukan verifikasi melalui kanal "
+        "resmi FinSecure. Jangan memberikan PIN, OTP, password, "
+        "atau kode keamanan kepada pihak lain."
+    ),
+}
+
 FRAUD_INTENTS = {
     "suspicious_transaction",
 }
@@ -94,11 +135,20 @@ def _get_handoff_target(
 
 def _create_local_customer_response(
     rag_result: dict[str, Any],
+    intent: str,
 ) -> str:
     """
-    Membuat respons layanan berdasarkan
-    dokumen RAG tanpa Gemini.
+    Membuat respons lokal berdasarkan intent.
+    RAG digunakan sebagai cadangan jika intent tidak memiliki
+    respons lokal.
     """
+
+    intent_response = LOCAL_CUSTOMER_RESPONSES.get(
+        intent
+    )
+
+    if intent_response:
+        return intent_response
 
     documents = rag_result.get(
         "documents",
@@ -120,8 +170,8 @@ def _create_local_customer_response(
 
     if not primary_content:
         return (
-            "Permintaan layanan telah diterima "
-            "dan memerlukan pemeriksaan lebih lanjut."
+            "Permintaan layanan telah diterima dan "
+            "memerlukan pemeriksaan lebih lanjut."
         )
 
     lines = [
@@ -244,7 +294,8 @@ ATURAN JAWABAN:
 
         response_text = (
             _create_local_customer_response(
-                rag_result
+                rag_result=rag_result,
+                intent=detected_intent
             )
         )
 
