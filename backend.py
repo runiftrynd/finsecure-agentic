@@ -1,3 +1,5 @@
+import traceback
+
 from __future__ import annotations
 
 from typing import Any
@@ -208,6 +210,22 @@ def process_finsecure_request(
         )
 
     except Exception as error:
+        error_traceback = traceback.format_exc()
+
+        # Ditampilkan pada Streamlit Cloud Logs.
+        print(
+            "\n===== FINSECURE BACKEND ERROR =====",
+            flush=True,
+        )
+        print(
+            error_traceback,
+            flush=True,
+        )
+        print(
+            "===== END FINSECURE ERROR =====\n",
+            flush=True,
+        )
+
         result = {
             "status": "failure",
             "response": (
@@ -220,10 +238,9 @@ def process_finsecure_request(
 
         if include_debug:
             result["debug"] = {
-                "error_type":
-                    type(error).__name__,
-                "error":
-                    str(error),
+                "error_type": type(error).__name__,
+                "error": str(error),
+                "traceback": error_traceback,
             }
 
         return result
