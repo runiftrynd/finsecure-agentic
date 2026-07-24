@@ -1,8 +1,8 @@
-import streamlit as st
-
 from __future__ import annotations
 
 from typing import Any
+
+import streamlit as st
 
 from backend import process_finsecure_request
 
