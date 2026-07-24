@@ -8,6 +8,7 @@ from typing import Any
 
 import chromadb
 import pandas as pd
+import streamlit as st
 import torch
 import xgboost as xgb
 from transformers import (
@@ -119,6 +120,134 @@ def require_path(
 
     return path
 
+def get_runtime_setting(
+    name: str,
+    default: Any = None,
+) -> Any:
+    """
+    Membaca konfigurasi dari Streamlit Secrets.
+    Jika tidak tersedia, membaca environment variable.
+    """
+
+    try:
+        secret_value = st.secrets.get(
+            name,
+            None,
+        )
+
+        if secret_value not in {
+            None,
+            "",
+        }:
+            return secret_value
+
+    except Exception:
+        pass
+
+    environment_value = os.getenv(
+        name
+    )
+
+    if environment_value not in {
+        None,
+        "",
+    }:
+        return environment_value
+
+    return default
+
+def resolve_intent_model_source() -> tuple[
+    str,
+    dict[str, Any],
+]:
+    """
+    Menggunakan model lokal jika tersedia.
+
+    Jika folder lokal tidak tersedia, model
+    diunduh dari Hugging Face Hub.
+    """
+
+    local_config_path = (
+        INTENT_MODEL_DIR
+        / "config.json"
+    )
+
+    if local_config_path.is_file():
+        print(
+            (
+                "Memuat model intent dari lokal: "
+                f"{INTENT_MODEL_DIR}"
+            ),
+            flush=True,
+        )
+
+        return (
+            str(INTENT_MODEL_DIR),
+            {},
+        )
+
+    model_repository = str(
+        get_runtime_setting(
+            "HF_INTENT_MODEL_REPO",
+            (
+                "runiftrynd/"
+                "finsecure-intent-indobert"
+            ),
+        )
+    ).strip()
+
+    if not model_repository:
+        raise RuntimeError(
+            "HF_INTENT_MODEL_REPO belum diatur."
+        )
+
+    model_subfolder = str(
+        get_runtime_setting(
+            "HF_INTENT_MODEL_SUBFOLDER",
+            "",
+        )
+        or ""
+    ).strip()
+
+    hf_token = get_runtime_setting(
+        "HF_TOKEN",
+        None,
+    )
+
+    load_arguments: dict[str, Any] = {}
+
+    if model_subfolder:
+        load_arguments[
+            "subfolder"
+        ] = model_subfolder
+
+    if hf_token:
+        load_arguments[
+            "token"
+        ] = str(hf_token)
+
+    print(
+        (
+            "Model intent lokal tidak ditemukan. "
+            "Memuat model dari Hugging Face: "
+            f"{model_repository}"
+        ),
+        flush=True,
+    )
+
+    if model_subfolder:
+        print(
+            (
+                "Subfolder model Hugging Face: "
+                f"{model_subfolder}"
+            ),
+            flush=True,
+        )
+
+    return (
+        model_repository,
+        load_arguments,
+    )
 
 # ============================================================
 # LOADER INTENT INDOBERT
@@ -134,21 +263,20 @@ def load_intent_resources() -> tuple[
     Memuat tokenizer dan model IndoBERT satu kali.
     """
 
-    require_path(
-        INTENT_MODEL_DIR,
-        "Folder model intent IndoBERT",
+    model_source, load_arguments = (
+        resolve_intent_model_source()
     )
 
     tokenizer = AutoTokenizer.from_pretrained(
-        str(INTENT_MODEL_DIR),
-        local_files_only=True,
+        model_source,
+        **load_arguments,
     )
 
     model = (
         AutoModelForSequenceClassification
         .from_pretrained(
-            str(INTENT_MODEL_DIR),
-            local_files_only=True,
+            model_source,
+            **load_arguments,
         )
     )
 
