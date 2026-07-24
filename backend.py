@@ -1,11 +1,10 @@
-import traceback
-
 from __future__ import annotations
 
 from typing import Any
 
 from workflow import run_finsecure_workflow
 
+import traceback
 
 def _classify_llm_error(
     synthesis_llm: dict[str, Any],
