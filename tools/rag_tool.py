@@ -42,6 +42,31 @@ QUERY_EXPANSION_RULES = {
         ),
         (
             (
+                "kartu baru",
+                "kartu sampai",
+                "kartu datang",
+                "pengiriman kartu",
+                "status kartu",
+                "kartu belum diterima",
+            ),
+            (
+                "SOP Pengiriman Kartu Baru, "
+                "status pengiriman kartu, "
+                "estimasi kedatangan kartu"
+            ),
+        ),
+        (
+            (
+                "kartu hilang",
+            ),
+            (
+                "SOP Pengiriman Kartu Baru, "
+                "status pengiriman kartu, "
+                "estimasi kedatangan kartu"
+            ),
+        ),
+        (
+            (
                 "kartu hilang",
                 "kehilangan kartu",
             ),
