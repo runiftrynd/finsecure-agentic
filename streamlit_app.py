@@ -14,6 +14,9 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+st.sidebar.code(
+    f"Watcher: {st.get_option('server.fileWatcherType')}"
+)
 
 st.markdown(
     """
