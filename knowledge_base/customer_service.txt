@@ -27,3 +27,19 @@ SALDO BELUM DIPERBARUI
 Saldo dapat terlambat diperbarui karena proses settlement atau gangguan
 sistem. Nasabah dapat memeriksa riwayat transaksi dan mencoba memuat
 ulang aplikasi.
+
+PENGIRIMAN KARTU BARU
+
+Kartu baru dikirim setelah proses penerbitan selesai. Nasabah
+dapat memeriksa status pengiriman melalui menu kartu pada
+aplikasi. Waktu kedatangan bergantung pada alamat tujuan dan
+layanan kurir. Jika kartu belum diterima sesuai estimasi,
+nasabah dapat menghubungi layanan pelanggan dengan menyiapkan
+nomor permohonan kartu.
+
+AKUN TERBLOKIR
+
+Akun dapat diblokir karena kesalahan autentikasi berulang atau
+pemeriksaan keamanan. Nasabah harus melakukan verifikasi melalui
+kanal resmi. Nasabah tidak boleh memberikan PIN, OTP, password,
+atau kode keamanan kepada pihak lain.
