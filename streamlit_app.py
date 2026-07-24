@@ -566,11 +566,30 @@ if user_message:
             assistant_response
         )
 
-        if result.get(
-            "status"
-        ) == "failure":
+        if result.get("status") == "failure":
             st.error(
                 "Terjadi kendala ketika memproses permintaan."
+            )   
+
+        if show_debug:
+            debug_result = result.get(
+                "debug",
+                {},
+            )
+
+            st.markdown(
+                "**Detail error pengujian**"
+            )
+
+            st.code(
+                debug_result.get(
+                    "traceback",
+                        debug_result.get(
+                            "error",
+                            "Detail error tidak tersedia.",
+                        ),
+                    ),
+                language="text",
             )
 
         display_metadata(
